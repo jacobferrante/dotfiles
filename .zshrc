@@ -10,6 +10,8 @@ plugins=(git zsh-syntax-highlighting)
 ## Source Oh my zsh
 source $ZSH/oh-my-zsh.sh
 
+## set cat > batcat
+alias cat="batcat"
 ## Set vim > nvim ##
 alias vim="nvim"
 ## dotfile quick edits 
@@ -17,3 +19,8 @@ alias .i3="nvim ~/.config/i3/config"
 alias .zshrc="nvim ~/.zshrc"
 alias .vimrc="nvim ~/.config/nvim/init.vim"
 alias .kitty="nvim ~/.config/kitty/kitty.conf"
+alias venv=". env/bin/activate"
+alias weather='curl wttr.in/morgantown'
+
+# add Pulumi to the PATH
+export PATH=$PATH:$HOME/.pulumi/bin

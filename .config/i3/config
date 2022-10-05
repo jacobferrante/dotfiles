@@ -1,4 +1,3 @@
-
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -146,7 +145,18 @@ bar {
         status_command i3status
 }
 
-## remove ugly i3 title bar
+
+## run monitor script
+bindsym $mod+m exec xrandr --output 'HDMI-1' --off --output 'eDP-1' --auto
+bindsym $mod+Ctrl+m exec xrandr --output "eDP-1" --auto --output "HDMI-1" --mode 1920x1080 --rate 144 --right-of "eDP-1"
+## start pavucontrol
+bindsym $mod+p exec pavucontrol
+
+## move workspaces around monitors
+bindsym $mod+Ctrl+l move workspace to output right
+bindsym $mod+Ctrl+h move workspace to output left
+
+# remove ugly i3 title bar
 default_border none
 
 ## bring ugly border backt to terminal 
