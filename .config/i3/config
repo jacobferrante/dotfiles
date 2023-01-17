@@ -1,3 +1,32 @@
+## Colors from Frappe
+
+set $rosewater #f2d5cf
+set $flamingo  #eebebe
+set $pink      #f4b8e4
+set $mauve     #ca9ee6
+set $red       #e78284
+set $maroon    #ea999c
+set $peach     #ef9f76
+set $green     #a6d189
+set $teal      #81c8be
+set $sky       #99d1db
+set $sapphire  #85c1dc
+set $blue      #8caaee
+set $lavender  #babbf1
+set $text      #c6d0f5
+set $subtext1  #b5bfe2
+set $subtext0  #a5adce
+set $overlay2  #949cbb
+set $overlay1  #838ba7
+set $overlay0  #737994
+set $surface2  #626880
+set $surface1  #51576d
+set $surface0  #414559
+set $base      #303446
+set $mantle    #292c3c
+set $crust     #232634
+
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -22,6 +51,11 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+
+
+## unbind useless caps lock into escape key
+exec setxkbmap -option caps:escape
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -143,12 +177,23 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
-}
+ 
+        colors {
+            background $base
+            statusline $text
+            separator #c6d0f5
+            focused_workspace  $blue  $crust  $blue
+            inactive_workspace #333333 $base  $text
+
+        }
+    }
+
 
 
 ## run monitor script
 bindsym $mod+m exec xrandr --output 'HDMI-1' --off --output 'eDP-1' --auto
-bindsym $mod+Ctrl+m exec xrandr --output "eDP-1" --auto --output "HDMI-1" --mode 1920x1080 --rate 144 --right-of "eDP-1"
+bindsym $mod+Ctrl+m exec xrandr --output "eDP-1" --off --output "HDMI-1" --mode 1920x1080 --rate 144 --right-of "eDP-1"
+bindsym $mod+Ctrl+Shift+m exec xrandr --output "eDP-1" --auto --output "HDMI-1" --mode 1920x1080 --rate 144 --right-of "eDP-1"
 ## start pavucontrol
 bindsym $mod+p exec pavucontrol
 
@@ -167,3 +212,11 @@ assign [class="kitty"] 1
 assign [class="firefox"] 2
 assign [class="discord"] 3 
 for_window [class="Spotify"] move to workspace 4 
+
+
+## screenshot
+bindsym $mod+Shift+s exec --no-startup-id maim "/home/$USER/Pictures/screenshots/$(date).jpg"
+
+## Gaps
+workspace $ws1 gaps inner 20px
+smart_gaps on
